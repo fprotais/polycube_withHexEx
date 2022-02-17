@@ -1,0 +1,19 @@
+test-linux:
+  tags:
+    - Linux
+  script:
+    - mkdir build
+    - cd build
+    - cmake ../CI -G Ninja
+    - cmake --build .
+    - ctest .
+
+test-windows:
+  tags:
+    - VS2017
+  script:
+    - mkdir build
+    - cd build
+    - cmake ../CI
+  allow_failure: true
+

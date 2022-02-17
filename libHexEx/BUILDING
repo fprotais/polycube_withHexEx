@@ -1,0 +1,49 @@
+libHexEx uses the cmake build system.
+
+libHexEx depends on OpenVolumeMesh 2.0, which is available on www.openvolumemesh.org.
+
+If you do not already have OpenVolumeMesh installed on your system you can build
+LibHexEx together with OpenVolumeMesh by performing the following steps:
+
+# Clone libHexEx
+git clone https://www.graphics.rwth-aachen.de:9000/HexEx/libHexEx.git libHexEx
+cd libHexEx
+
+# Clone OpenVolumeMesh
+git clone https://graphics.rwth-aachen.de:9000/OpenVolumeMesh/OpenVolumeMesh
+
+# Create build directory
+mkdir build
+cd build
+
+# Initialize the build directory
+cmake ..
+
+# Build
+make
+
+# Try a demo
+./demo/minimum_example/minimum_example
+or
+./demo/cmdline_tool/cmdline_tool
+Example input and a script which produce the results of our paper are available [here](https://www.graphics.rwth-aachen.de/publication/03260/).
+
+If you do have OpenVolumeMesh installed, you can build libHexEx by performing the following steps:
+
+# Clone libHexEx
+git clone https://www.graphics.rwth-aachen.de:9000/HexEx/libHexEx.git libHexEx
+cd libHexEx
+
+# Create build directory
+mkdir build
+cd build
+
+# Initialize the build directory
+cmake -D OPENVOLUMEMESH_INCLUDE_DIR=/path/to/OpenVolumeMesh/include \
+    -D OPENVOLUMEMESH_LIBRARY_DIR=/path/to/OpenVolumeMesh/lib ..
+
+# Build
+make
+
+# Try a demo
+./demo/minimum_example/minimum_example

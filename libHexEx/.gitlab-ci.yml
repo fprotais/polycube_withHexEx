@@ -1,0 +1,38 @@
+stages:
+  - build
+
+gcc-c++11:
+  stage: build
+  script: "CI/ci-linux.sh gcc C++11"
+  tags:
+    - Linux
+
+clang-c++11:
+  stage: build
+  script: "CI/ci-linux.sh clang C++11"
+  tags:
+    - Linux
+
+gcc-c++14:
+  stage: build
+  script: "CI/ci-linux.sh gcc C++14"
+  tags:
+    - Linux
+
+clang-c++14:
+  stage: build
+  script: "CI/ci-linux.sh clang C++14"
+  tags:
+    - Linux
+
+macos-c++11:
+  stage: build
+  script: "CI/ci-mac.sh C++11"
+  tags:
+    - Apple
+
+macos-c++14:
+  stage: build
+  script: "CI/ci-mac.sh C++14"
+  tags:
+    - Apple

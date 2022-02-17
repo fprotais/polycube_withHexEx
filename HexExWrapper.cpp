@@ -1,6 +1,5 @@
 #include "HexExWrapper.h"
 
-#define HEXEX_VERBOSE
 #include <HexEx.hh>
 //#include <OpenVolumeMesh/Mesh/HexahedralMeshIterators.hh>
 //#include <OpenVolumeMesh/FileManager/FileManager.hh>
