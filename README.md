@@ -7,7 +7,7 @@ The code take as input a tetmesh with a file containing the flagging of each cel
 # Use CMake to build the project:
 ```sh
 git clone --recurse-submodules https://github.com/fprotais/polycube_withHexEx &&
-cd fastbndpolycube &&
+cd polycube_withHexEx &&
 mkdir build &&
 cd build &&
 cmake -DCMAKE_BUILD_TYPE=Release .. &&
