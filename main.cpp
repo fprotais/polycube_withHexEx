@@ -114,12 +114,12 @@ void integer_cubecover(const Tetrahedra & m, const CellFacetAttribute<int>&flag,
 	std::cerr << " Done.\n";
 }
 
-double rescaling(Tetrahedra& m) {
+double rescaling(Tetrahedra& m, double scale) {
 	double size = 0;
 	FOR(c, m.ncells()) FOR(cf, 4) FOR(cfv, 3) {
 		size += (m.points[m.facet_vert(c, cf, cfv)] - m.points[m.facet_vert(c, cf, (cfv + 1) % 3)]).norm();
 	}
-	size /= m.ncells() * 12;
+	size /= m.ncells() * 12 * scale;
 	FOR(v, m.nverts()) m.points[v] /= size;
 	return size;
 }
@@ -130,14 +130,18 @@ void revert_rescaling(PointSet& m, double sizing) {
 
 int main(int argc, char** argv) {
 
-	if (argc != 4) {
-		std::cout << "Usage is: " << argv[0] << " tetmesh.ext flagfile deformedoutput.ext" << std::endl;
+	if (argc < 4) {
+		std::cout << "Usage is: " << argv[0] << " tetmesh.ext flagfile deformedoutput.ext scale(optionnal)" << std::endl;
+		std::cout << "exemple: " << argv[0] << " ../S1.mesh ../S1.flags hexmesh.mesh 1." << std::endl;
 		return 1;
 	}
 	std::string inputfile = argv[1];
 	std::string flagfile = argv[2];
 	std::string outputfile = argv[3];
-
+	double hexscale = 1.;
+	if (argc == 5) {
+		hexscale = std::stod(argv[4]);
+	}
 	
 	Tetrahedra m;
 	read_by_extension(inputfile, m);
@@ -156,7 +160,7 @@ int main(int argc, char** argv) {
 
 
 	PointAttribute<vec3> U(m), int_U(m);
-	double sizing = rescaling(m);
+	double sizing = rescaling(m, hexscale);
 
 	float_cubecover(m, flag, U);
 

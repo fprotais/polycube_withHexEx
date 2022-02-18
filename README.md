@@ -17,6 +17,6 @@ make -j
 # Running the code :
 
 ```sh
-./polycube ../S1.mesh ../S1.flags hexmesh.mesh
+./polycube ../S1.mesh ../S1.flags hexmesh.mesh 1.
 ```
 For the supported mesh formats, see [ultimaille](https://github.com/ssloy/ultimaille). 
